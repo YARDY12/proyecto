@@ -14,6 +14,7 @@ import java.sql.SQLException;
  */
 public class Conexion {
 
+    //El nombre de la base de datos tiene que ser Sistema_Pedidos
     private static final String URL = "jdbc:mysql://localhost:3306/sistema_pedido";
     private static final String USUARIO = "root";
     private static final String CONTRASENA = "";
