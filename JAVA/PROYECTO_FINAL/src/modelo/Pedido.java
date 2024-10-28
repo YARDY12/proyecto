@@ -11,24 +11,24 @@ import java.time.LocalDate;
 public class Pedido {
     
     private int id_pedido;
-    private Cliente id_cliente;
-    private Mesa id_mesa;
-    private Persona id_empleado;
-    private String descripcion;
-    private double precio_unitario;
+    private Sala id_sala;
+    private int num_mesa;
     private LocalDate fecha;
+    private double total;
+    private String estado;
+    private String usuario;
 
     public Pedido() {
     }
 
-    public Pedido(int id_pedido, Cliente id_cliente, Mesa id_mesa, Persona id_empleado, String descripcion, double precio_unitario, LocalDate fecha) {
+    public Pedido(int id_pedido, Sala id_sala, int num_mesa, LocalDate fecha, double total, String estado, String usuario) {
         this.id_pedido = id_pedido;
-        this.id_cliente = id_cliente;
-        this.id_mesa = id_mesa;
-        this.id_empleado = id_empleado;
-        this.descripcion = descripcion;
-        this.precio_unitario = precio_unitario;
+        this.id_sala = id_sala;
+        this.num_mesa = num_mesa;
         this.fecha = fecha;
+        this.total = total;
+        this.estado = estado;
+        this.usuario = usuario;
     }
 
     public int getId_pedido() {
@@ -39,44 +39,20 @@ public class Pedido {
         this.id_pedido = id_pedido;
     }
 
-    public Cliente getId_cliente() {
-        return id_cliente;
+    public Sala getId_sala() {
+        return id_sala;
     }
 
-    public void setId_cliente(Cliente id_cliente) {
-        this.id_cliente = id_cliente;
+    public void setId_sala(Sala id_sala) {
+        this.id_sala = id_sala;
     }
 
-    public Mesa getId_mesa() {
-        return id_mesa;
+    public int getNum_mesa() {
+        return num_mesa;
     }
 
-    public void setId_mesa(Mesa id_mesa) {
-        this.id_mesa = id_mesa;
-    }
-
-    public Persona getId_empleado() {
-        return id_empleado;
-    }
-
-    public void setId_empleado(Persona id_empleado) {
-        this.id_empleado = id_empleado;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public double getPrecio_unitario() {
-        return precio_unitario;
-    }
-
-    public void setPrecio_unitario(double precio_unitario) {
-        this.precio_unitario = precio_unitario;
+    public void setNum_mesa(int num_mesa) {
+        this.num_mesa = num_mesa;
     }
 
     public LocalDate getFecha() {
@@ -86,7 +62,31 @@ public class Pedido {
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
-    
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
     
     
 }

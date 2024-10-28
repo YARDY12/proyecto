@@ -5,6 +5,11 @@
  */
 package vista;
 
+import controlador.SalaControlador;
+import dao.LoginDao;
+import dao.PedidoDAO;
+import dao.ProductoDAO;
+import dao.SalaDAO;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Image;
@@ -22,13 +27,65 @@ import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+
+import modelo.DetallePedido;
+import modelo.Eventos;
+import modelo.Pedido;
+import modelo.Producto;
+import modelo.Sala;
+import modelo.Tables;
 import modelo.login;
 
 public final class AdministradorVista extends javax.swing.JFrame {
 
+    private SalaControlador controlador;
+    Sala sl = new Sala();
+    SalaDAO slDao = new SalaDAO();
+    
+    Eventos event = new Eventos();
+
+    Producto pla = new Producto();
+    ProductoDAO plaDao = new ProductoDAO();
+
+    Pedido ped = new Pedido();
+    PedidoDAO pedDao = new PedidoDAO();
+    DetallePedido detPedido = new DetallePedido();
+
+    DefaultTableModel modelo = new DefaultTableModel();
+    DefaultTableModel tmp = new DefaultTableModel();
+
+    LoginDao lgDao = new LoginDao();
+    int item;
+    double Totalpagar = 0.00;
+
+    Date fechaActual = new Date();
+    String fechaFormato = new SimpleDateFormat("yyyy-MM-dd").format(fechaActual);
     public AdministradorVista(login priv) {
         initComponents();
-
+        ImageIcon img = new ImageIcon(getClass().getResource("/img/logo.png"));
+        Image igmEscalada = img.getImage().getScaledInstance(labelLogo.getWidth(), labelLogo.getHeight(), Image.SCALE_SMOOTH);
+        Icon icono = new ImageIcon(igmEscalada);
+        labelLogo.setIcon(icono);
+        this.setIconImage(img.getImage());
+        this.setLocationRelativeTo(null);
+        txtIdHistorialPedido.setVisible(false);
+        
+        if (priv.getRol().equals("Asistente")) {
+            btnSala.setEnabled(false);
+            
+            LabelVendedor.setText(priv.getNombre());
+        } else {
+            LabelVendedor.setText(priv.getNombre());
+        }
+        
+        txtIdHistorialPedido.setVisible(false);
+        txtIdPedido.setVisible(false);
+        txtIdPlato.setVisible(false);
+        txtIdSala.setVisible(false);
+        txtTempIdSala.setVisible(false);
+        txtTempNumMesa.setVisible(false);
+        jTabbedPane1.setEnabled(false);
+        panelSalas();
     }
 
     @SuppressWarnings("unchecked")
@@ -173,7 +230,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
 
         btnVentas.setBackground(new java.awt.Color(255, 153, 0));
         btnVentas.setForeground(new java.awt.Color(255, 255, 255));
-        btnVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/pedidos.png"))); // NOI18N
+        btnVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pedidos.png"))); // NOI18N
         btnVentas.setText("Historial de Pedidos");
         btnVentas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnVentas.setFocusable(false);
@@ -191,7 +248,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
 
         btnPlatos.setBackground(new java.awt.Color(255, 153, 0));
         btnPlatos.setForeground(new java.awt.Color(255, 255, 255));
-        btnPlatos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/platos.png"))); // NOI18N
+        btnPlatos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/nuevo.png"))); // NOI18N
         btnPlatos.setText("Registro de Platos");
         btnPlatos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnPlatos.setFocusable(false);
@@ -258,7 +315,6 @@ public final class AdministradorVista extends javax.swing.JFrame {
 
         jLabel38.setFont(new java.awt.Font("Zilla Slab", 3, 48)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(204, 0, 51));
-        jLabel38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/titulo.png"))); // NOI18N
         jLabel38.setText("Cevicheria \"Don Cangrejo\"");
         jLabel38.setFocusable(false);
         jLabel38.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -296,7 +352,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "NOMBRE", "Mesas"
+                "ID", "NOMBRE", "MESAS"
             }
         ));
         tableSala.setRowHeight(23);
@@ -550,7 +606,6 @@ public final class AdministradorVista extends javax.swing.JFrame {
         jScrollPane12.setViewportView(txtComentario);
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/money.png"))); // NOI18N
         jLabel11.setText("Total a Pagar");
 
         totalMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -672,7 +727,6 @@ public final class AdministradorVista extends javax.swing.JFrame {
         jPanel25.add(totalFinalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 390, 120, -1));
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/money.png"))); // NOI18N
         jLabel17.setText("Total a Pagar");
         jPanel25.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 340, -1, -1));
 
@@ -787,7 +841,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "Nombre", "Correo", "Rol", "Acciones"
+                "Id", "Nombre", "Correo", "Rol"
             }
         ));
         TableUsuarios.setRowHeight(23);
@@ -839,7 +893,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
         jPanel15.add(btnIniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 300, 50));
 
         jLabel36.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
-        jLabel36.setText("Nombre:");
+        jLabel36.setText("Correo:");
         jPanel15.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
 
         txtNombre.setBorder(null);
@@ -1128,7 +1182,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         // TODO add your handling code here:
-
+      System.exit(0);
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void labelLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelLogoMouseClicked
@@ -1141,6 +1195,9 @@ public final class AdministradorVista extends javax.swing.JFrame {
 
     private void btnUsuarios1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuarios1ActionPerformed
         // TODO add your handling code here:
+        LimpiarTable();
+        ListarUsuarios();
+        jTabbedPane1.setSelectedIndex(6);
     }//GEN-LAST:event_btnUsuarios1ActionPerformed
 
     private void TablePlatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablePlatosMouseClicked
@@ -1232,6 +1289,18 @@ public final class AdministradorVista extends javax.swing.JFrame {
 
     private void btnRegistrarSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarSalaActionPerformed
         // TODO add your handling code here:
+        if (txtNombreSala.getText().equals("") || txtMesas.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Los campos esta vacios");
+        } else {
+            sl.setNombre(txtNombreSala.getText());
+            sl.setMesa(Integer.parseInt(txtMesas.getText()));
+            slDao.registrarSala(sl);
+            JOptionPane.showMessageDialog(null, "Sala Registrado");
+            LimpiarSala();
+            LimpiarTable();
+            ListarSalas();
+        }
+        
 
     }//GEN-LAST:event_btnRegistrarSalaActionPerformed
 
@@ -1259,7 +1328,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
     private javax.swing.JPanel PanelSalas;
     private javax.swing.JTable TablePedidos;
     private javax.swing.JTable TablePlatos;
-    private javax.swing.JTable TableUsuarios;
+    public javax.swing.JTable TableUsuarios;
     private javax.swing.JButton btnActualizarSala;
     private javax.swing.JButton btnAddPlato;
     private javax.swing.JButton btnEditarPlato;
@@ -1362,5 +1431,170 @@ public final class AdministradorVista extends javax.swing.JFrame {
     private javax.swing.JTextField txtTempIdSala;
     private javax.swing.JTextField txtTempNumMesa;
     // End of variables declaration//GEN-END:variables
+
+    //Metodo creado por el controlador, ejemplo del ing
+    public void setControlador(SalaControlador controlador) {
+        this.controlador = controlador;
+    }
+    
+     private void ListarUsuarios() {
+        List<login> Listar = lgDao.ListarUsuarios();
+        modelo = (DefaultTableModel) TableUsuarios.getModel();
+        Object[] ob = new Object[4];
+        for (int i = 0; i < Listar.size(); i++) {
+            ob[0] = Listar.get(i).getId();
+            ob[1] = Listar.get(i).getNombre();
+            ob[2] = Listar.get(i).getCorreo();
+            ob[3] = Listar.get(i).getRol();
+            modelo.addRow(ob);
+        }
+        colorHeader(TableUsuarios);
+    }    
+
+    public void LimpiarTable() {
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            modelo.removeRow(i);
+            i = i - 1;
+        }
+    }
+
+    private void ListarSalas() {
+        List<Sala> Listar = slDao.listarSalas();
+        modelo = (DefaultTableModel) tableSala.getModel();
+        Object[] ob = new Object[3];
+        for (int i = 0; i < Listar.size(); i++) {
+            ob[0] = Listar.get(i).getId_sala();
+            ob[1] = Listar.get(i).getNombre();
+            ob[2] = Listar.get(i).getMesa();
+            modelo.addRow(ob);
+        }
+        colorHeader(tableSala);
+
+    }
+
+    private void colorHeader(JTable tabla) {
+        tabla.setModel(modelo);
+        JTableHeader header = tabla.getTableHeader();
+        header.setOpaque(false);
+        header.setBackground(new Color(0, 110, 255));
+        header.setForeground(Color.white);
+    }
+
+    private void LimpiarSala() {
+        txtIdSala.setText("");
+        txtNombreSala.setText("");
+        txtMesas.setText("");
+    }
+
+    private void panelSalas() {
+        List<Sala> Listar = slDao.listarSalas();
+        for (int i = 0; i < Listar.size(); i++) {
+            int id = Listar.get(i).getId_sala();
+            int cantidad = Listar.get(i).getMesa();
+            JButton boton = new JButton(Listar.get(i).getNombre(), new ImageIcon(getClass().getResource("/Img/salas.png")));
+            boton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            boton.setHorizontalTextPosition(JButton.CENTER);
+            boton.setVerticalTextPosition(JButton.BOTTOM);
+            boton.setBackground(new Color(204, 204, 204));
+            PanelSalas.add(boton);
+            boton.addActionListener((ActionEvent e) -> {
+                LimpiarTable();
+                PanelMesas.removeAll();
+                panelMesas(id, cantidad);
+                jTabbedPane1.setSelectedIndex(2);
+            });
+        }
+    }
+    
+    //crear mesas
+    private void panelMesas(int id_sala, int cant) {
+        for (int i = 1; i <= cant; i++) {
+            int num_mesa = i;
+            //verificar estado
+            JButton boton = new JButton("MESA N°: " + i, new ImageIcon(getClass().getResource("/Img/mesa.png")));
+            boton.setHorizontalTextPosition(JButton.CENTER);
+            boton.setVerticalTextPosition(JButton.BOTTOM);
+            int verificar = pedDao.verificarEstado(num_mesa, id_sala);
+            if (verificar > 0) {
+                boton.setBackground(new Color(255, 51, 51));
+            } else {
+                boton.setBackground(new Color(0, 102, 102));
+            }
+            boton.setForeground(Color.WHITE);
+            boton.setFocusable(false);
+            boton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            PanelMesas.add(boton);
+            boton.addActionListener((ActionEvent e) -> {
+                if (verificar > 0) {
+                    LimpiarTable();
+                    verPedido(verificar);
+                    verPedidoDetalle(verificar);
+                    btnFinalizar.setEnabled(true);
+                    
+                    jTabbedPane1.setSelectedIndex(4);
+                } else {
+                    LimpiarTable();
+                    ListarPlatos(tblTemPlatos);
+                    jTabbedPane1.setSelectedIndex(3);
+                    txtTempIdSala.setText("" + id_sala);
+                    txtTempNumMesa.setText("" + num_mesa);
+                }
+            });
+        }
+    }
+    
+    // productos
+    private void ListarPlatos(JTable tabla) {
+    // Cambia el nombre del método y la variable de acuerdo a la nueva clase
+    List<Producto> listar = plaDao.listar(txtBuscarPlato.getText()); // Asegúrate de que txtBuscarProducto sea el campo correcto
+    modelo = (DefaultTableModel) tabla.getModel();
+    modelo.setRowCount(0); // Limpiar la tabla antes de agregar nuevos datos
+    Object[] ob = new Object[4]; // Cambia el tamaño del arreglo a 4 para incluir todos los campos de Producto
+
+    for (Producto producto : listar) {
+        ob[0] = producto.getId_producto(); // Asegúrate de usar getId_producto()
+        ob[1] = producto.getNom_producto(); // Asegúrate de usar getNom_producto()
+        ob[2] = producto.getTipoPlato(); // Incluye el tipo de plato si es necesario
+        ob[3] = producto.getPrecio(); // Asegúrate de usar getPrecio()
+        modelo.addRow(ob);
+    }
+    colorHeader(tabla);
+}
+    
+    
+    private void TotalPagar(JTable tabla, JLabel label) {
+        Totalpagar = 0.00;
+        int numFila = tabla.getRowCount();
+        for (int i = 0; i < numFila; i++) {
+            double cal = Double.parseDouble(String.valueOf(tabla.getModel().getValueAt(i, 4)));
+            Totalpagar += cal;
+        }
+        label.setText(String.format("%.2f", Totalpagar));
+    }
+    
+    public void verPedido(int id_pedido) {
+        ped = pedDao.obtenerPedido(id_pedido);
+        totalFinalizar.setText("" + ped.getTotal());
+        txtFechaHora.setText("" + ped.getFecha());
+        txtSalaFinalizar.setText("" + ped.getId_sala());
+        txtNumMesaFinalizar.setText("" + ped.getNum_mesa());
+        txtIdPedido.setText("" + ped.getId_pedido());
+    }
+    
+    public void verPedidoDetalle(int id_pedido) {
+        List<DetallePedido> Listar = pedDao.verPedidoDetalle(id_pedido);
+        modelo = (DefaultTableModel) tableFinalizar.getModel();
+        Object[] ob = new Object[6];
+        for (int i = 0; i < Listar.size(); i++) {
+            ob[0] = Listar.get(i).getId_detallepedido();
+            ob[1] = Listar.get(i).getNombre();
+            ob[2] = Listar.get(i).getCantidad();
+            ob[3] = Listar.get(i).getPrecio();
+            ob[4] = Listar.get(i).getCantidad() * Listar.get(i).getPrecio();
+            ob[5] = Listar.get(i).getComentario();
+            modelo.addRow(ob);
+        }
+        colorHeader(tableFinalizar);
+    }
 
 }

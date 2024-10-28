@@ -11,22 +11,22 @@ package modelo;
 public class DetallePedido {
     
     private int id_detallepedido;
-    private Pedido id_pedido;
-    private Producto id_producto;
-    private double total;
+    private String nombre;
+    private double precio;
     private int cantidad;
-    private String estado;
+    private String comentario;
+    private Pedido id_pedido;
 
     public DetallePedido() {
     }
 
-    public DetallePedido(int id_detallepedido, Pedido id_pedido, Producto id_producto, double total, int cantidad, String estado) {
+    public DetallePedido(int id_detallepedido, String nombre, double precio, int cantidad, String comentario, Pedido id_pedido) {
         this.id_detallepedido = id_detallepedido;
-        this.id_pedido = id_pedido;
-        this.id_producto = id_producto;
-        this.total = total;
+        this.nombre = nombre;
+        this.precio = precio;
         this.cantidad = cantidad;
-        this.estado = estado;
+        this.comentario = comentario;
+        this.id_pedido = id_pedido;
     }
 
     public int getId_detallepedido() {
@@ -37,28 +37,20 @@ public class DetallePedido {
         this.id_detallepedido = id_detallepedido;
     }
 
-    public Pedido getId_pedido() {
-        return id_pedido;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setId_pedido(Pedido id_pedido) {
-        this.id_pedido = id_pedido;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public Producto getId_producto() {
-        return id_producto;
+    public double getPrecio() {
+        return precio;
     }
 
-    public void setId_producto(Producto id_producto) {
-        this.id_producto = id_producto;
-    }
-
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
 
     public int getCantidad() {
@@ -69,13 +61,23 @@ public class DetallePedido {
         this.cantidad = cantidad;
     }
 
-    public String getEstado() {
-        return estado;
+    public String getComentario() {
+        return comentario;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
+
+    public Pedido getId_pedido() {
+        return id_pedido;
+    }
+
+    public void setId_pedido(Pedido id_pedido) {
+        this.id_pedido = id_pedido;
+    }
+
+    
     
     
 }

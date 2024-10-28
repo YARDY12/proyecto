@@ -1,5 +1,6 @@
 package vista;
 
+import dao.LoginDao;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,12 +8,60 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import modelo.login;
 
 public class FrmLogin extends javax.swing.JFrame {
 
+    login lg = new login();
+    LoginDao login = new LoginDao();
+    private Timer tiempo;
+    int contador;
+    int segundos = 30;
+
     public FrmLogin() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        txtCorreo.setText("u22239465@utp.edu.pe");
+        txtPass.setText("admin");
+        barra.setVisible(false);
+        ImageIcon img = new ImageIcon(getClass().getResource("/img/logo.png"));
+        this.setIconImage(img.getImage());
+    }
 
+    public class BarraProgreso implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            contador++;
+            barra.setValue(contador);
+            if (contador == 100) {
+                tiempo.stop();
+                if (barra.getValue() == 100) {
+                    AdministradorVista sis = new AdministradorVista(lg);
+                    sis.setVisible(true);
+                    dispose();
+                }
+            }
+        }
+    }
+
+    public void validar() {
+        String correo = txtCorreo.getText();
+        String pass = String.valueOf(txtPass.getPassword());
+        if (!"".equals(correo) || !"".equals(pass)) {
+
+            lg = login.log(correo, pass);
+            if (lg.getCorreo() != null && lg.getPass() != null) {
+                barra.setVisible(true);
+                contador = -1;
+                barra.setValue(0);
+                barra.setStringPainted(true);
+                tiempo = new Timer(segundos, new BarraProgreso());
+                tiempo.start();
+            } else {
+                JOptionPane.showMessageDialog(null, "Correo o la Contraseña incorrecta");
+            }
+        }
     }
 
     /**
@@ -91,7 +140,7 @@ public class FrmLogin extends javax.swing.JFrame {
         });
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 430, 93, 35));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/LOGO.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 170, 170));
 
         barra.setBackground(new java.awt.Color(255, 255, 255));
@@ -104,7 +153,7 @@ public class FrmLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-
+        validar();
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
@@ -113,7 +162,7 @@ public class FrmLogin extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-
+       System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassActionPerformed
