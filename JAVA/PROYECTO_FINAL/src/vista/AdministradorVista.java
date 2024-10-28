@@ -874,7 +874,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
                 txtCorreoActionPerformed(evt);
             }
         });
-        jPanel15.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 300, 30));
+        jPanel15.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 300, 30));
 
         txtPass.setBorder(null);
         jPanel15.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 300, 30));
@@ -897,7 +897,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
         jPanel15.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
 
         txtNombre.setBorder(null);
-        jPanel15.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 300, 30));
+        jPanel15.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 300, 30));
 
         jLabel37.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
         jLabel37.setText("Rol:");
@@ -1190,7 +1190,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
     }//GEN-LAST:event_labelLogoMouseClicked
 
     private void btnPlatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlatosActionPerformed
-
+jTabbedPane1.setSelectedIndex(7);
     }//GEN-LAST:event_btnPlatosActionPerformed
 
     private void btnUsuarios1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuarios1ActionPerformed
@@ -1315,6 +1315,21 @@ public final class AdministradorVista extends javax.swing.JFrame {
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
 
+        if (txtNombre.getText().equals("") || txtCorreo.getText().equals("") || txtPass.getPassword().equals("")) {
+            JOptionPane.showMessageDialog(null, "Todo los campos son requeridos");
+        } else {
+            login lg = new login();
+            String correo = txtCorreo.getText();
+            String pass = String.valueOf(txtPass.getPassword());
+            String nom = txtNombre.getText();
+            String rol = cbxRol.getSelectedItem().toString();
+            lg.setNombre(nom);
+            lg.setCorreo(correo);
+            lg.setPass(pass);
+            lg.setRol(rol);
+            lgDao.Registrar(lg);
+            JOptionPane.showMessageDialog(null, "Usuario Registrado");
+        }
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
