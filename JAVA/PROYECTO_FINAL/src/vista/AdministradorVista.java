@@ -1190,7 +1190,10 @@ public final class AdministradorVista extends javax.swing.JFrame {
     }//GEN-LAST:event_labelLogoMouseClicked
 
     private void btnPlatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlatosActionPerformed
-jTabbedPane1.setSelectedIndex(7);
+        LimpiarTable();
+        ListarPlatos(TablePlatos);
+        
+        jTabbedPane1.setSelectedIndex(6);
     }//GEN-LAST:event_btnPlatosActionPerformed
 
     private void btnUsuarios1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuarios1ActionPerformed
