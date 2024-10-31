@@ -41,7 +41,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
     private SalaControlador controlador;
     Sala sl = new Sala();
     SalaDAO slDao = new SalaDAO();
-    
+
     Eventos event = new Eventos();
 
     Producto pla = new Producto();
@@ -60,6 +60,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
 
     Date fechaActual = new Date();
     String fechaFormato = new SimpleDateFormat("yyyy-MM-dd").format(fechaActual);
+
     public AdministradorVista(login priv) {
         initComponents();
         ImageIcon img = new ImageIcon(getClass().getResource("/img/logo.png"));
@@ -69,15 +70,15 @@ public final class AdministradorVista extends javax.swing.JFrame {
         this.setIconImage(img.getImage());
         this.setLocationRelativeTo(null);
         txtIdHistorialPedido.setVisible(false);
-        
+
         if (priv.getRol().equals("Asistente")) {
             btnSala.setEnabled(false);
-            
+
             LabelVendedor.setText(priv.getNombre());
         } else {
             LabelVendedor.setText(priv.getNombre());
         }
-        
+
         txtIdHistorialPedido.setVisible(false);
         txtIdPedido.setVisible(false);
         txtIdPlato.setVisible(false);
@@ -208,7 +209,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         labelLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/LOGO.png"))); // NOI18N
+        labelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
         labelLogo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         labelLogo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -218,7 +219,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
 
         btnSala.setBackground(new java.awt.Color(255, 153, 0));
         btnSala.setForeground(new java.awt.Color(255, 255, 255));
-        btnSala.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/sala.png"))); // NOI18N
+        btnSala.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sala.png"))); // NOI18N
         btnSala.setText("Ambientes");
         btnSala.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSala.setFocusable(false);
@@ -1172,28 +1173,34 @@ public final class AdministradorVista extends javax.swing.JFrame {
 
     private void btnSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalaActionPerformed
         // TODO add your handling code here:
-
+        LimpiarTable();
+        ListarSalas();
+        jTabbedPane1.setSelectedIndex(1);
     }//GEN-LAST:event_btnSalaActionPerformed
 
     private void btnVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasActionPerformed
         // TODO add your handling code here:
-
+        LimpiarTable();
+        ListarPedidos();
+        jTabbedPane1.setSelectedIndex(5);
     }//GEN-LAST:event_btnVentasActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         // TODO add your handling code here:
-      System.exit(0);
+        System.exit(0);
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void labelLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelLogoMouseClicked
-
+        jTabbedPane1.setSelectedIndex(0);
+        PanelSalas.removeAll();
+        panelSalas();
     }//GEN-LAST:event_labelLogoMouseClicked
 
     private void btnPlatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlatosActionPerformed
         LimpiarTable();
         ListarPlatos(TablePlatos);
-        
-        jTabbedPane1.setSelectedIndex(6);
+
+        jTabbedPane1.setSelectedIndex(7);
     }//GEN-LAST:event_btnPlatosActionPerformed
 
     private void btnUsuarios1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuarios1ActionPerformed
@@ -1303,13 +1310,16 @@ public final class AdministradorVista extends javax.swing.JFrame {
             LimpiarTable();
             ListarSalas();
         }
-        
+
 
     }//GEN-LAST:event_btnRegistrarSalaActionPerformed
 
     private void tableSalaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableSalaMouseClicked
         // TODO add your handling code here:
-
+        int fila = tableSala.rowAtPoint(evt.getPoint());
+        txtIdSala.setText(tableSala.getValueAt(fila, 0).toString());
+        txtNombreSala.setText(tableSala.getValueAt(fila, 1).toString());
+        txtMesas.setText(tableSala.getValueAt(fila, 2).toString());
     }//GEN-LAST:event_tableSalaMouseClicked
 
     private void txtIdPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdPlatoActionPerformed
@@ -1454,8 +1464,8 @@ public final class AdministradorVista extends javax.swing.JFrame {
     public void setControlador(SalaControlador controlador) {
         this.controlador = controlador;
     }
-    
-     private void ListarUsuarios() {
+
+    private void ListarUsuarios() {
         List<login> Listar = lgDao.ListarUsuarios();
         modelo = (DefaultTableModel) TableUsuarios.getModel();
         Object[] ob = new Object[4];
@@ -1467,7 +1477,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
             modelo.addRow(ob);
         }
         colorHeader(TableUsuarios);
-    }    
+    }
 
     public void LimpiarTable() {
         for (int i = 0; i < modelo.getRowCount(); i++) {
@@ -1509,7 +1519,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
         for (int i = 0; i < Listar.size(); i++) {
             int id = Listar.get(i).getId_sala();
             int cantidad = Listar.get(i).getMesa();
-            JButton boton = new JButton(Listar.get(i).getNombre(), new ImageIcon(getClass().getResource("/Img/salas.png")));
+            JButton boton = new JButton(Listar.get(i).getNombre(), new ImageIcon(getClass().getResource("/img/salas.png")));
             boton.setCursor(new Cursor(Cursor.HAND_CURSOR));
             boton.setHorizontalTextPosition(JButton.CENTER);
             boton.setVerticalTextPosition(JButton.BOTTOM);
@@ -1523,7 +1533,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
             });
         }
     }
-    
+
     //crear mesas
     private void panelMesas(int id_sala, int cant) {
         for (int i = 1; i <= cant; i++) {
@@ -1548,7 +1558,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
                     verPedido(verificar);
                     verPedidoDetalle(verificar);
                     btnFinalizar.setEnabled(true);
-                    
+
                     jTabbedPane1.setSelectedIndex(4);
                 } else {
                     LimpiarTable();
@@ -1560,26 +1570,25 @@ public final class AdministradorVista extends javax.swing.JFrame {
             });
         }
     }
-    
+
     // productos
     private void ListarPlatos(JTable tabla) {
-    // Cambia el nombre del método y la variable de acuerdo a la nueva clase
-    List<Producto> listar = plaDao.listar(txtBuscarPlato.getText()); // Asegúrate de que txtBuscarProducto sea el campo correcto
-    modelo = (DefaultTableModel) tabla.getModel();
-    modelo.setRowCount(0); // Limpiar la tabla antes de agregar nuevos datos
-    Object[] ob = new Object[4]; // Cambia el tamaño del arreglo a 4 para incluir todos los campos de Producto
+        // Cambia el nombre del método y la variable de acuerdo a la nueva clase
+        List<Producto> listar = plaDao.listar(txtBuscarPlato.getText()); // Asegúrate de que txtBuscarProducto sea el campo correcto
+        modelo = (DefaultTableModel) tabla.getModel();
+        modelo.setRowCount(0); // Limpiar la tabla antes de agregar nuevos datos
+        Object[] ob = new Object[4]; // Cambia el tamaño del arreglo a 4 para incluir todos los campos de Producto
 
-    for (Producto producto : listar) {
-        ob[0] = producto.getId_producto(); // Asegúrate de usar getId_producto()
-        ob[1] = producto.getNom_producto(); // Asegúrate de usar getNom_producto()
-        ob[2] = producto.getTipoPlato(); // Incluye el tipo de plato si es necesario
-        ob[3] = producto.getPrecio(); // Asegúrate de usar getPrecio()
-        modelo.addRow(ob);
+        for (Producto producto : listar) {
+            ob[0] = producto.getId_producto(); // Asegúrate de usar getId_producto()
+            ob[1] = producto.getNom_producto(); // Asegúrate de usar getNom_producto()
+            ob[2] = producto.getTipoPlato(); // Incluye el tipo de plato si es necesario
+            ob[3] = producto.getPrecio(); // Asegúrate de usar getPrecio()
+            modelo.addRow(ob);
+        }
+        colorHeader(tabla);
     }
-    colorHeader(tabla);
-}
-    
-    
+
     private void TotalPagar(JTable tabla, JLabel label) {
         Totalpagar = 0.00;
         int numFila = tabla.getRowCount();
@@ -1589,7 +1598,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
         }
         label.setText(String.format("%.2f", Totalpagar));
     }
-    
+
     public void verPedido(int id_pedido) {
         ped = pedDao.obtenerPedido(id_pedido);
         totalFinalizar.setText("" + ped.getTotal());
@@ -1598,7 +1607,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
         txtNumMesaFinalizar.setText("" + ped.getNum_mesa());
         txtIdPedido.setText("" + ped.getId_pedido());
     }
-    
+
     public void verPedidoDetalle(int id_pedido) {
         List<DetallePedido> Listar = pedDao.verPedidoDetalle(id_pedido);
         modelo = (DefaultTableModel) tableFinalizar.getModel();
@@ -1613,6 +1622,25 @@ public final class AdministradorVista extends javax.swing.JFrame {
             modelo.addRow(ob);
         }
         colorHeader(tableFinalizar);
+    }
+
+    private void ListarPedidos() {
+        Tables color = new Tables();
+        List<Pedido> Listar = pedDao.listarPedidos();
+        modelo = (DefaultTableModel) TablePedidos.getModel();
+        Object[] ob = new Object[7];
+        for (int i = 0; i < Listar.size(); i++) {
+            ob[0] = Listar.get(i).getId_pedido();
+            ob[1] = Listar.get(i).getId_sala();
+            ob[2] = Listar.get(i).getUsuario();
+            ob[3] = Listar.get(i).getNum_mesa();
+            ob[4] = Listar.get(i).getFecha();
+            ob[5] = Listar.get(i).getTotal();
+            ob[6] = Listar.get(i).getEstado();
+            modelo.addRow(ob);
+        }
+        colorHeader(TablePedidos);
+        TablePedidos.setDefaultRenderer(Object.class, color);
     }
 
 }
