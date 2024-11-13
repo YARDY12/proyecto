@@ -293,8 +293,8 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Salas">
-                <Property name="tabTitle" type="java.lang.String" value="Salas"/>
+              <JTabbedPaneConstraints tabName="Ambientes">
+                <Property name="tabTitle" type="java.lang.String" value="Ambientes"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -455,7 +455,7 @@
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="0"/>
-                        <Property name="text" type="java.lang.String" value="Nuevo Sala"/>
+                        <Property name="text" type="java.lang.String" value="Nuevo Ambiente"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

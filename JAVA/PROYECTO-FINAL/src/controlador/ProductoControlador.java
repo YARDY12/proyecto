@@ -33,8 +33,8 @@ public class ProductoControlador {
          return null;
     }
 
-    public void actualizarProducto(int id_producto, String nom_producto, String tipoPlato, String categoria, double precio) {
-        Producto producto = new Producto(id_producto, nom_producto, tipoPlato, categoria, precio);
+    public void actualizarProducto(int id_producto, String nom_producto, String tipoPlato, String categoria, double precio, String fecha) {
+        Producto producto = new Producto(id_producto, nom_producto, tipoPlato, categoria, precio, fecha);
         
     }
 

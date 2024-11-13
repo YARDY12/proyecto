@@ -16,17 +16,21 @@ public class Producto {
     private String tipoPlato;
     private String categoria;
     private double precio;
+    private String fecha;
 
     public Producto() {
     }
 
-    public Producto(int id_producto, String nom_producto, String tipoPlato, String categoria, double precio) {
+    public Producto(int id_producto, String nom_producto, String tipoPlato, String categoria, double precio, String fecha) {
         this.id_producto = id_producto;
         this.nom_producto = nom_producto;
         this.tipoPlato = tipoPlato;
         this.categoria = categoria;
         this.precio = precio;
+        this.fecha = fecha;
     }
+
+    
 
     public int getId_producto() {
         return id_producto;
@@ -67,6 +71,15 @@ public class Producto {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+    
     
     
 }

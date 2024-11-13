@@ -33,6 +33,7 @@ public class ProductoDAO {
             ps.setString(2, producto.getTipoPlato());
             ps.setString(3, producto.getCategoria());
             ps.setDouble(4, producto.getPrecio());
+            ps.setString(5, producto.getFecha());
             ps.execute();
             return true;
         } catch (SQLException e) {

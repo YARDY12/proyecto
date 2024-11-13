@@ -408,7 +408,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
         jLabel33.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel33.setForeground(new java.awt.Color(255, 255, 255));
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel33.setText("Nuevo Sala");
+        jLabel33.setText("Nuevo Ambiente");
         jPanel38.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 30));
 
         jPanel10.add(jPanel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 35));
@@ -474,7 +474,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
         });
         jPanel4.add(btnNuevoSala, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 40, 100, 40));
 
-        jTabbedPane1.addTab("Salas", jPanel4);
+        jTabbedPane1.addTab("Ambientes", jPanel4);
 
         PanelMesas.setLayout(new java.awt.GridLayout(0, 5));
         jScrollPane9.setViewportView(PanelMesas);
@@ -1212,26 +1212,73 @@ public final class AdministradorVista extends javax.swing.JFrame {
 
     private void TablePlatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablePlatosMouseClicked
         // TODO add your handling code here:
+        int fila = TablePlatos.rowAtPoint(evt.getPoint());
+        txtIdPlato.setText(TablePlatos.getValueAt(fila, 0).toString());
+        txtNombrePlato.setText(TablePlatos.getValueAt(fila, 1).toString());
+        txtPrecioPlato.setText(TablePlatos.getValueAt(fila, 2).toString());
 
     }//GEN-LAST:event_TablePlatosMouseClicked
 
     private void btnNuevoPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoPlatoActionPerformed
         // TODO add your handling code here:
+        LimpiarPlatos();
 
     }//GEN-LAST:event_btnNuevoPlatoActionPerformed
 
     private void btnEliminarPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarPlatoActionPerformed
         // TODO add your handling code here:
+        if (!"".equals(txtIdPlato.getText())) {
+            int pregunta = JOptionPane.showConfirmDialog(null, "Esta seguro de eliminar");
+            if (pregunta == 0) {
+                int id = Integer.parseInt(txtIdPlato.getText());
+                plaDao.eliminar(id);
+                LimpiarTable();
+                LimpiarPlatos();
+                ListarPlatos(TablePlatos);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecciona una fila");
+        }
 
     }//GEN-LAST:event_btnEliminarPlatoActionPerformed
 
     private void btnEditarPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPlatoActionPerformed
         // TODO add your handling code here:
+        if ("".equals(txtIdPlato.getText())) {
+            JOptionPane.showMessageDialog(null, "Seleecione una fila");
+        } else {
+            if (!"".equals(txtNombrePlato.getText()) || !"".equals(txtPrecioPlato.getText())) {
+                pla.setNom_producto(txtNombrePlato.getText());
+                pla.setPrecio(Double.parseDouble(txtPrecioPlato.getText()));
+                pla.setId_producto(Integer.parseInt(txtIdPlato.getText()));
+                if (plaDao.modificar(pla)) {
+                    JOptionPane.showMessageDialog(null, "Plato Modificado");
+                    LimpiarTable();
+                    ListarPlatos(TablePlatos);
+                    LimpiarPlatos();
+                }
+
+            }
+        }
 
     }//GEN-LAST:event_btnEditarPlatoActionPerformed
 
     private void btnGuardarPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarPlatoActionPerformed
         // TODO add your handling code here:
+        if (!"".equals(txtNombrePlato.getText()) || !"".equals(txtPrecioPlato.getText())) {
+            pla.setNom_producto(txtNombrePlato.getText());
+            pla.setPrecio(Double.parseDouble(txtPrecioPlato.getText()));
+            pla.setFecha(fechaFormato);
+            if (plaDao.registrar(pla)) {
+                JOptionPane.showMessageDialog(null, "Plato Registrado");
+                LimpiarTable();
+                ListarPlatos(TablePlatos);
+                LimpiarPlatos();
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Los campos estan vacios");
+        }
 
     }//GEN-LAST:event_btnGuardarPlatoActionPerformed
 
@@ -1254,6 +1301,14 @@ public final class AdministradorVista extends javax.swing.JFrame {
 
     private void TablePedidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablePedidosMouseClicked
         // TODO add your handling code here:
+        int fila = TablePedidos.rowAtPoint(evt.getPoint());
+        int id_pedido = Integer.parseInt(TablePedidos.getValueAt(fila, 0).toString());
+        LimpiarTable();
+        verPedido(id_pedido);
+        verPedidoDetalle(id_pedido);
+        jTabbedPane1.setSelectedIndex(4);
+        btnFinalizar.setEnabled(false);
+        txtIdHistorialPedido.setText(""+id_pedido);
 
     }//GEN-LAST:event_TablePedidosMouseClicked
 
@@ -1512,6 +1567,12 @@ public final class AdministradorVista extends javax.swing.JFrame {
         txtIdSala.setText("");
         txtNombreSala.setText("");
         txtMesas.setText("");
+    }
+    
+    private void LimpiarPlatos() {
+        txtIdPlato.setText("");
+        txtNombrePlato.setText("");
+        txtPrecioPlato.setText("");
     }
 
     private void panelSalas() {
