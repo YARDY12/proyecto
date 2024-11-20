@@ -10,7 +10,6 @@ package modelo;
  */
 public class Producto {
     
-    
     private int id_producto;
     private String nom_producto;
     private String tipoPlato;
