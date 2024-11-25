@@ -183,8 +183,6 @@ public final class AdministradorVista extends javax.swing.JFrame {
         txtCorreo1 = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
-        jLabel23 = new javax.swing.JLabel();
-        txtNombrePlato = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
         txtPrecioPlato = new javax.swing.JTextField();
         jPanel31 = new javax.swing.JPanel();
@@ -192,6 +190,12 @@ public final class AdministradorVista extends javax.swing.JFrame {
         jPanel39 = new javax.swing.JPanel();
         jLabel40 = new javax.swing.JLabel();
         txtIdPlato = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        txtNombrePlato = new javax.swing.JTextField();
+        txtCategoria = new javax.swing.JTextField();
+        txtTipoPlato = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
         TablePlatos = new javax.swing.JTable();
         btnGuardarPlato = new javax.swing.JButton();
@@ -314,7 +318,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 720));
 
-        jLabel38.setFont(new java.awt.Font("Zilla Slab", 3, 48)); // NOI18N
+        jLabel38.setFont(new java.awt.Font("Imprint MT Shadow", 1, 48)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(204, 0, 51));
         jLabel38.setText("Cevicheria \"Don Cangrejo\"");
         jLabel38.setFocusable(false);
@@ -492,7 +496,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel22Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 573, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -679,7 +683,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
         jPanel23Layout.setVerticalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
+                .addContainerGap(44, Short.MAX_VALUE)
                 .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel23Layout.createSequentialGroup()
                         .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -960,26 +964,23 @@ public final class AdministradorVista extends javax.swing.JFrame {
         jPanel11.setBackground(new java.awt.Color(204, 204, 204));
         jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel23.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
-        jLabel23.setText("Nombre:");
-        jPanel11.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
-
-        txtNombrePlato.setBackground(new java.awt.Color(204, 204, 204));
-        txtNombrePlato.setBorder(null);
-        jPanel11.add(txtNombrePlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 170, 30));
-
         jLabel25.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel25.setText("Precio:");
-        jPanel11.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
+        jPanel11.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
 
         txtPrecioPlato.setBackground(new java.awt.Color(204, 204, 204));
         txtPrecioPlato.setBorder(null);
+        txtPrecioPlato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPrecioPlatoActionPerformed(evt);
+            }
+        });
         txtPrecioPlato.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtPrecioPlatoKeyTyped(evt);
             }
         });
-        jPanel11.add(txtPrecioPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, 170, 30));
+        jPanel11.add(txtPrecioPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 170, 30));
 
         jPanel31.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -994,7 +995,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jPanel11.add(jPanel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 170, 2));
+        jPanel11.add(jPanel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 170, 2));
 
         jPanel33.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -1040,6 +1041,45 @@ public final class AdministradorVista extends javax.swing.JFrame {
             }
         });
         jPanel11.add(txtIdPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 80, -1));
+
+        jLabel23.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel23.setText("Nombre:");
+        jPanel11.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
+
+        jLabel27.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel27.setText("Tipo de Plato:");
+        jPanel11.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
+
+        jLabel28.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel28.setText("Categoría:");
+        jPanel11.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
+
+        txtNombrePlato.setBackground(new java.awt.Color(204, 204, 204));
+        txtNombrePlato.setBorder(null);
+        txtNombrePlato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombrePlatoActionPerformed(evt);
+            }
+        });
+        jPanel11.add(txtNombrePlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 170, 30));
+
+        txtCategoria.setBackground(new java.awt.Color(204, 204, 204));
+        txtCategoria.setBorder(null);
+        txtCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCategoriaActionPerformed(evt);
+            }
+        });
+        jPanel11.add(txtCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 170, 30));
+
+        txtTipoPlato.setBackground(new java.awt.Color(204, 204, 204));
+        txtTipoPlato.setBorder(null);
+        txtTipoPlato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTipoPlatoActionPerformed(evt);
+            }
+        });
+        jPanel11.add(txtTipoPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 170, 30));
 
         TablePlatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1104,21 +1144,19 @@ public final class AdministradorVista extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnGuardarPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(83, 83, 83)
-                        .addComponent(btnEditarPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(90, 90, 90)
-                        .addComponent(btnEliminarPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(61, 61, 61)
-                        .addComponent(btnNuevoPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48))))
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(378, Short.MAX_VALUE)
+                .addComponent(btnGuardarPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(83, 83, 83)
+                .addComponent(btnEditarPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(90, 90, 90)
+                .addComponent(btnEliminarPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61)
+                .addComponent(btnNuevoPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1130,11 +1168,9 @@ public final class AdministradorVista extends javax.swing.JFrame {
                     .addComponent(btnEditarPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardarPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(53, 53, 53)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1264,20 +1300,26 @@ public final class AdministradorVista extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarPlatoActionPerformed
 
     private void btnGuardarPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarPlatoActionPerformed
-        // TODO add your handling code here:
-        if (!"".equals(txtNombrePlato.getText()) || !"".equals(txtPrecioPlato.getText())) {
+        // Verifica que ambos campos no estén vacíos
+        if (!"".equals(txtNombrePlato.getText()) && !"".equals(txtPrecioPlato.getText())) {
             pla.setNom_producto(txtNombrePlato.getText());
-            pla.setPrecio(Double.parseDouble(txtPrecioPlato.getText()));
+            try {
+                pla.setPrecio(Double.parseDouble(txtPrecioPlato.getText()));
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "El precio debe ser un número válido");
+                return; // Salir del método si hay un error
+            }
             pla.setFecha(fechaFormato);
             if (plaDao.registrar(pla)) {
                 JOptionPane.showMessageDialog(null, "Plato Registrado");
                 LimpiarTable();
                 ListarPlatos(TablePlatos);
                 LimpiarPlatos();
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al registrar el plato");
             }
-
         } else {
-            JOptionPane.showMessageDialog(null, "Los campos estan vacios");
+            JOptionPane.showMessageDialog(null, "Los campos están vacíos");
         }
 
     }//GEN-LAST:event_btnGuardarPlatoActionPerformed
@@ -1308,7 +1350,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
         verPedidoDetalle(id_pedido);
         jTabbedPane1.setSelectedIndex(4);
         btnFinalizar.setEnabled(false);
-        txtIdHistorialPedido.setText(""+id_pedido);
+        txtIdHistorialPedido.setText("" + id_pedido);
 
     }//GEN-LAST:event_TablePedidosMouseClicked
 
@@ -1404,6 +1446,22 @@ public final class AdministradorVista extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCorreoActionPerformed
 
+    private void txtNombrePlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombrePlatoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombrePlatoActionPerformed
+
+    private void txtTipoPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoPlatoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTipoPlatoActionPerformed
+
+    private void txtCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCategoriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCategoriaActionPerformed
+
+    private void txtPrecioPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioPlatoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrecioPlatoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LabelVendedor;
@@ -1443,6 +1501,8 @@ public final class AdministradorVista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
@@ -1495,6 +1555,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
     private javax.swing.JLabel totalFinalizar;
     private javax.swing.JLabel totalMenu;
     private javax.swing.JTextField txtBuscarPlato;
+    private javax.swing.JTextField txtCategoria;
     private javax.swing.JTextPane txtComentario;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtCorreo1;
@@ -1513,6 +1574,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
     private javax.swing.JTextField txtSalaFinalizar;
     private javax.swing.JTextField txtTempIdSala;
     private javax.swing.JTextField txtTempNumMesa;
+    private javax.swing.JTextField txtTipoPlato;
     // End of variables declaration//GEN-END:variables
 
     //Metodo creado por el controlador, ejemplo del ing
@@ -1568,7 +1630,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
         txtNombreSala.setText("");
         txtMesas.setText("");
     }
-    
+
     private void LimpiarPlatos() {
         txtIdPlato.setText("");
         txtNombrePlato.setText("");
@@ -1600,7 +1662,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
         for (int i = 1; i <= cant; i++) {
             int num_mesa = i;
             //verificar estado
-            JButton boton = new JButton("MESA N°: " + i, new ImageIcon(getClass().getResource("/Img/mesa.png")));
+            JButton boton = new JButton("MESA N°: " + i, new ImageIcon(getClass().getResource("/img/mesa.png")));
             boton.setHorizontalTextPosition(JButton.CENTER);
             boton.setVerticalTextPosition(JButton.BOTTOM);
             int verificar = pedDao.verificarEstado(num_mesa, id_sala);

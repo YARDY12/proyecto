@@ -36,7 +36,7 @@ import modelo.Sala;
 import modelo.Tables;
 import modelo.login;
 
-public final class AdministradorVista extends javax.swing.JFrame {
+public final class MeseroVista extends javax.swing.JFrame {
 
     private SalaControlador controlador;
     Sala sl = new Sala();
@@ -61,7 +61,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
     Date fechaActual = new Date();
     String fechaFormato = new SimpleDateFormat("yyyy-MM-dd").format(fechaActual);
 
-    public AdministradorVista(login priv) {
+    public MeseroVista(login priv) {
         initComponents();
         ImageIcon img = new ImageIcon(getClass().getResource("/img/logo.png"));
         Image igmEscalada = img.getImage().getScaledInstance(labelLogo.getWidth(), labelLogo.getHeight(), Image.SCALE_SMOOTH);
@@ -81,7 +81,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
 
         txtIdHistorialPedido.setVisible(false);
         txtIdPedido.setVisible(false);
-        txtIdPlato.setVisible(false);
+        
         txtIdSala.setVisible(false);
         txtTempIdSala.setVisible(false);
         txtTempNumMesa.setVisible(false);
@@ -163,43 +163,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         TablePedidos = new javax.swing.JTable();
         jLabel16 = new javax.swing.JLabel();
-        jPanel12 = new javax.swing.JPanel();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        TableUsuarios = new javax.swing.JTable();
-        jPanel15 = new javax.swing.JPanel();
-        jLabel34 = new javax.swing.JLabel();
-        jLabel35 = new javax.swing.JLabel();
-        txtCorreo = new javax.swing.JTextField();
-        txtPass = new javax.swing.JPasswordField();
-        btnIniciar = new javax.swing.JButton();
-        jLabel36 = new javax.swing.JLabel();
-        txtNombre = new javax.swing.JTextField();
-        jLabel37 = new javax.swing.JLabel();
-        cbxRol = new javax.swing.JComboBox<>();
-        jPanel21 = new javax.swing.JPanel();
-        jLabel39 = new javax.swing.JLabel();
-        btnUsuarios4 = new javax.swing.JButton();
-        btnUsuarios5 = new javax.swing.JButton();
-        txtCorreo1 = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel11 = new javax.swing.JPanel();
-        jLabel23 = new javax.swing.JLabel();
-        txtNombrePlato = new javax.swing.JTextField();
-        jLabel25 = new javax.swing.JLabel();
-        txtPrecioPlato = new javax.swing.JTextField();
-        jPanel31 = new javax.swing.JPanel();
-        jPanel33 = new javax.swing.JPanel();
-        jPanel39 = new javax.swing.JPanel();
-        jLabel40 = new javax.swing.JLabel();
-        txtIdPlato = new javax.swing.JTextField();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        TablePlatos = new javax.swing.JTable();
-        btnGuardarPlato = new javax.swing.JButton();
-        btnEditarPlato = new javax.swing.JButton();
-        btnEliminarPlato = new javax.swing.JButton();
-        btnNuevoPlato = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
-        btnUsuarios1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Panel de Adminstración");
@@ -314,7 +278,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 720));
 
-        jLabel38.setFont(new java.awt.Font("Zilla Slab", 3, 48)); // NOI18N
+        jLabel38.setFont(new java.awt.Font("Imprint MT Shadow", 1, 48)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(204, 0, 51));
         jLabel38.setText("Cevicheria \"Don Cangrejo\"");
         jLabel38.setFocusable(false);
@@ -492,7 +456,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel22Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 573, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -679,7 +643,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
         jPanel23Layout.setVerticalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
+                .addContainerGap(44, Short.MAX_VALUE)
                 .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel23Layout.createSequentialGroup()
                         .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -835,312 +799,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Historial Pedidos", jPanel6);
 
-        jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        TableUsuarios.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Id", "Nombre", "Correo", "Rol"
-            }
-        ));
-        TableUsuarios.setRowHeight(23);
-        jScrollPane6.setViewportView(TableUsuarios);
-        if (TableUsuarios.getColumnModel().getColumnCount() > 0) {
-            TableUsuarios.getColumnModel().getColumn(0).setMinWidth(50);
-            TableUsuarios.getColumnModel().getColumn(0).setPreferredWidth(50);
-            TableUsuarios.getColumnModel().getColumn(0).setMaxWidth(80);
-            TableUsuarios.getColumnModel().getColumn(3).setMinWidth(150);
-            TableUsuarios.getColumnModel().getColumn(3).setPreferredWidth(150);
-            TableUsuarios.getColumnModel().getColumn(3).setMaxWidth(200);
-        }
-
-        jPanel12.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 660, 460));
-
-        jPanel15.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel15.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel34.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
-        jLabel34.setText("Nombre de usuario:");
-        jPanel15.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 102, -1, -1));
-
-        jLabel35.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
-        jLabel35.setText("Contraseña");
-        jPanel15.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 130, -1));
-
-        txtCorreo.setBorder(null);
-        txtCorreo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCorreoActionPerformed(evt);
-            }
-        });
-        jPanel15.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 300, 30));
-
-        txtPass.setBorder(null);
-        jPanel15.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 300, 30));
-
-        btnIniciar.setBackground(new java.awt.Color(255, 153, 0));
-        btnIniciar.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        btnIniciar.setForeground(new java.awt.Color(255, 255, 255));
-        btnIniciar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/GuardarTodo.png"))); // NOI18N
-        btnIniciar.setText("Registrar");
-        btnIniciar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnIniciar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIniciarActionPerformed(evt);
-            }
-        });
-        jPanel15.add(btnIniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 300, 50));
-
-        jLabel36.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
-        jLabel36.setText("Correo:");
-        jPanel15.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
-
-        txtNombre.setBorder(null);
-        jPanel15.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 300, 30));
-
-        jLabel37.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
-        jLabel37.setText("Rol:");
-        jPanel15.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 90, -1));
-
-        cbxRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Mesero", "Cocinero" }));
-        jPanel15.add(cbxRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 300, 30));
-
-        jPanel21.setBackground(new java.awt.Color(255, 153, 0));
-        jPanel21.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel39.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel39.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel39.setText("Nuevo Usuario");
-        jPanel21.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 35));
-
-        jPanel15.add(jPanel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 35));
-
-        jPanel12.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 360, 520));
-
-        btnUsuarios4.setBackground(new java.awt.Color(255, 153, 0));
-        btnUsuarios4.setForeground(new java.awt.Color(255, 255, 255));
-        btnUsuarios4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/config.png"))); // NOI18N
-        btnUsuarios4.setText("Modificar");
-        btnUsuarios4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnUsuarios4.setFocusable(false);
-        btnUsuarios4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUsuarios4ActionPerformed(evt);
-            }
-        });
-        jPanel12.add(btnUsuarios4, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 30, 130, 40));
-
-        btnUsuarios5.setBackground(new java.awt.Color(255, 153, 0));
-        btnUsuarios5.setForeground(new java.awt.Color(255, 255, 255));
-        btnUsuarios5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/eliminar.png"))); // NOI18N
-        btnUsuarios5.setText("Eliminar");
-        btnUsuarios5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnUsuarios5.setFocusable(false);
-        btnUsuarios5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUsuarios5ActionPerformed(evt);
-            }
-        });
-        jPanel12.add(btnUsuarios5, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 30, 130, 40));
-
-        txtCorreo1.setBackground(new java.awt.Color(204, 204, 204));
-        txtCorreo1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtCorreo1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCorreo1ActionPerformed(evt);
-            }
-        });
-        jPanel12.add(txtCorreo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, 300, 30));
-
-        jTabbedPane1.addTab("Usuarios", jPanel12);
-
-        jPanel11.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel23.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
-        jLabel23.setText("Nombre:");
-        jPanel11.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
-
-        txtNombrePlato.setBackground(new java.awt.Color(204, 204, 204));
-        txtNombrePlato.setBorder(null);
-        jPanel11.add(txtNombrePlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 170, 30));
-
-        jLabel25.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
-        jLabel25.setText("Precio:");
-        jPanel11.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
-
-        txtPrecioPlato.setBackground(new java.awt.Color(204, 204, 204));
-        txtPrecioPlato.setBorder(null);
-        txtPrecioPlato.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtPrecioPlatoKeyTyped(evt);
-            }
-        });
-        jPanel11.add(txtPrecioPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, 170, 30));
-
-        jPanel31.setBackground(new java.awt.Color(0, 0, 0));
-
-        javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
-        jPanel31.setLayout(jPanel31Layout);
-        jPanel31Layout.setHorizontalGroup(
-            jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel31Layout.setVerticalGroup(
-            jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        jPanel11.add(jPanel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 170, 2));
-
-        jPanel33.setBackground(new java.awt.Color(0, 0, 0));
-
-        javax.swing.GroupLayout jPanel33Layout = new javax.swing.GroupLayout(jPanel33);
-        jPanel33.setLayout(jPanel33Layout);
-        jPanel33Layout.setHorizontalGroup(
-            jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel33Layout.setVerticalGroup(
-            jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        jPanel11.add(jPanel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 170, 2));
-
-        jPanel39.setBackground(new java.awt.Color(255, 153, 0));
-
-        jLabel40.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel40.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel40.setText("Platos de la Carta");
-
-        javax.swing.GroupLayout jPanel39Layout = new javax.swing.GroupLayout(jPanel39);
-        jPanel39.setLayout(jPanel39Layout);
-        jPanel39Layout.setHorizontalGroup(
-            jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel40, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel39Layout.setVerticalGroup(
-            jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel39Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel40, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jPanel11.add(jPanel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 50));
-
-        txtIdPlato.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdPlatoActionPerformed(evt);
-            }
-        });
-        jPanel11.add(txtIdPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 80, -1));
-
-        TablePlatos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ID", "DESCRIPCIÓN", "PRECIO"
-            }
-        ));
-        TablePlatos.setRowHeight(23);
-        TablePlatos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TablePlatosMouseClicked(evt);
-            }
-        });
-        jScrollPane4.setViewportView(TablePlatos);
-        if (TablePlatos.getColumnModel().getColumnCount() > 0) {
-            TablePlatos.getColumnModel().getColumn(0).setMinWidth(100);
-            TablePlatos.getColumnModel().getColumn(0).setPreferredWidth(100);
-            TablePlatos.getColumnModel().getColumn(0).setMaxWidth(150);
-            TablePlatos.getColumnModel().getColumn(2).setMinWidth(200);
-            TablePlatos.getColumnModel().getColumn(2).setPreferredWidth(200);
-            TablePlatos.getColumnModel().getColumn(2).setMaxWidth(300);
-        }
-
-        btnGuardarPlato.setBackground(new java.awt.Color(255, 153, 0));
-        btnGuardarPlato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/GuardarTodo.png"))); // NOI18N
-        btnGuardarPlato.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarPlatoActionPerformed(evt);
-            }
-        });
-
-        btnEditarPlato.setBackground(new java.awt.Color(255, 153, 0));
-        btnEditarPlato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Actualizar (2).png"))); // NOI18N
-        btnEditarPlato.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarPlatoActionPerformed(evt);
-            }
-        });
-
-        btnEliminarPlato.setBackground(new java.awt.Color(255, 153, 0));
-        btnEliminarPlato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/eliminar.png"))); // NOI18N
-        btnEliminarPlato.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarPlatoActionPerformed(evt);
-            }
-        });
-
-        btnNuevoPlato.setBackground(new java.awt.Color(255, 153, 0));
-        btnNuevoPlato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/nuevo.png"))); // NOI18N
-        btnNuevoPlato.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNuevoPlatoActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnGuardarPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(83, 83, 83)
-                        .addComponent(btnEditarPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(90, 90, 90)
-                        .addComponent(btnEliminarPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(61, 61, 61)
-                        .addComponent(btnNuevoPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48))))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnEliminarPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNuevoPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEditarPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGuardarPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(53, 53, 53)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Platos", jPanel2);
-
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 95, 1080, 620));
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 1080, 620));
 
         btnSalir.setBackground(new java.awt.Color(255, 153, 0));
         btnSalir.setForeground(new java.awt.Color(255, 255, 255));
@@ -1154,19 +813,6 @@ public final class AdministradorVista extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 30, 140, 45));
-
-        btnUsuarios1.setBackground(new java.awt.Color(255, 153, 0));
-        btnUsuarios1.setForeground(new java.awt.Color(255, 255, 255));
-        btnUsuarios1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usuarios.png"))); // NOI18N
-        btnUsuarios1.setText("Usuarios");
-        btnUsuarios1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnUsuarios1.setFocusable(false);
-        btnUsuarios1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUsuarios1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnUsuarios1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 30, 140, 45));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1198,106 +844,10 @@ public final class AdministradorVista extends javax.swing.JFrame {
 
     private void btnPlatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlatosActionPerformed
         LimpiarTable();
-        ListarPlatos(TablePlatos);
+        
 
         jTabbedPane1.setSelectedIndex(7);
     }//GEN-LAST:event_btnPlatosActionPerformed
-
-    private void btnUsuarios1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuarios1ActionPerformed
-        // TODO add your handling code here:
-        LimpiarTable();
-        ListarUsuarios();
-        jTabbedPane1.setSelectedIndex(6);
-    }//GEN-LAST:event_btnUsuarios1ActionPerformed
-
-    private void TablePlatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablePlatosMouseClicked
-        // TODO add your handling code here:
-        int fila = TablePlatos.rowAtPoint(evt.getPoint());
-        txtIdPlato.setText(TablePlatos.getValueAt(fila, 0).toString());
-        txtNombrePlato.setText(TablePlatos.getValueAt(fila, 1).toString());
-        txtPrecioPlato.setText(TablePlatos.getValueAt(fila, 2).toString());
-
-    }//GEN-LAST:event_TablePlatosMouseClicked
-
-    private void btnNuevoPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoPlatoActionPerformed
-        // TODO add your handling code here:
-        LimpiarPlatos();
-
-    }//GEN-LAST:event_btnNuevoPlatoActionPerformed
-
-    private void btnEliminarPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarPlatoActionPerformed
-        // TODO add your handling code here:
-        if (!"".equals(txtIdPlato.getText())) {
-            int pregunta = JOptionPane.showConfirmDialog(null, "Esta seguro de eliminar");
-            if (pregunta == 0) {
-                int id = Integer.parseInt(txtIdPlato.getText());
-                plaDao.eliminar(id);
-                LimpiarTable();
-                LimpiarPlatos();
-                ListarPlatos(TablePlatos);
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Selecciona una fila");
-        }
-
-    }//GEN-LAST:event_btnEliminarPlatoActionPerformed
-
-    private void btnEditarPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPlatoActionPerformed
-        // TODO add your handling code here:
-        if ("".equals(txtIdPlato.getText())) {
-            JOptionPane.showMessageDialog(null, "Seleecione una fila");
-        } else {
-            if (!"".equals(txtNombrePlato.getText()) || !"".equals(txtPrecioPlato.getText())) {
-                pla.setNom_producto(txtNombrePlato.getText());
-                pla.setPrecio(Double.parseDouble(txtPrecioPlato.getText()));
-                pla.setId_producto(Integer.parseInt(txtIdPlato.getText()));
-                if (plaDao.modificar(pla)) {
-                    JOptionPane.showMessageDialog(null, "Plato Modificado");
-                    LimpiarTable();
-                    ListarPlatos(TablePlatos);
-                    LimpiarPlatos();
-                }
-
-            }
-        }
-
-    }//GEN-LAST:event_btnEditarPlatoActionPerformed
-
-    private void btnGuardarPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarPlatoActionPerformed
-        // TODO add your handling code here:
-        if (!"".equals(txtNombrePlato.getText()) || !"".equals(txtPrecioPlato.getText())) {
-            pla.setNom_producto(txtNombrePlato.getText());
-            pla.setPrecio(Double.parseDouble(txtPrecioPlato.getText()));
-            pla.setFecha(fechaFormato);
-            if (plaDao.registrar(pla)) {
-                JOptionPane.showMessageDialog(null, "Plato Registrado");
-                LimpiarTable();
-                ListarPlatos(TablePlatos);
-                LimpiarPlatos();
-            }
-
-        } else {
-            JOptionPane.showMessageDialog(null, "Los campos estan vacios");
-        }
-
-    }//GEN-LAST:event_btnGuardarPlatoActionPerformed
-
-    private void txtPrecioPlatoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioPlatoKeyTyped
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_txtPrecioPlatoKeyTyped
-
-    private void txtCorreo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreo1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCorreo1ActionPerformed
-
-    private void btnUsuarios5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuarios5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnUsuarios5ActionPerformed
-
-    private void btnUsuarios4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuarios4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnUsuarios4ActionPerformed
 
     private void TablePedidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablePedidosMouseClicked
         // TODO add your handling code here:
@@ -1377,62 +927,24 @@ public final class AdministradorVista extends javax.swing.JFrame {
         txtMesas.setText(tableSala.getValueAt(fila, 2).toString());
     }//GEN-LAST:event_tableSalaMouseClicked
 
-    private void txtIdPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdPlatoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdPlatoActionPerformed
-
-    private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-
-        if (txtNombre.getText().equals("") || txtCorreo.getText().equals("") || txtPass.getPassword().equals("")) {
-            JOptionPane.showMessageDialog(null, "Todo los campos son requeridos");
-        } else {
-            login lg = new login();
-            String correo = txtCorreo.getText();
-            String pass = String.valueOf(txtPass.getPassword());
-            String nom = txtNombre.getText();
-            String rol = cbxRol.getSelectedItem().toString();
-            lg.setNombre(nom);
-            lg.setCorreo(correo);
-            lg.setPass(pass);
-            lg.setRol(rol);
-            lgDao.Registrar(lg);
-            JOptionPane.showMessageDialog(null, "Usuario Registrado");
-        }
-    }//GEN-LAST:event_btnIniciarActionPerformed
-
-    private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCorreoActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LabelVendedor;
     private javax.swing.JPanel PanelMesas;
     private javax.swing.JPanel PanelSalas;
     private javax.swing.JTable TablePedidos;
-    private javax.swing.JTable TablePlatos;
-    public javax.swing.JTable TableUsuarios;
     private javax.swing.JButton btnActualizarSala;
     private javax.swing.JButton btnAddPlato;
-    private javax.swing.JButton btnEditarPlato;
-    private javax.swing.JButton btnEliminarPlato;
     private javax.swing.JButton btnEliminarSala;
     private javax.swing.JButton btnEliminarTempPlato;
     private javax.swing.JButton btnFinalizar;
     private javax.swing.JButton btnGenerarPedido;
-    private javax.swing.JButton btnGuardarPlato;
-    private javax.swing.JButton btnIniciar;
-    private javax.swing.JButton btnNuevoPlato;
     private javax.swing.JButton btnNuevoSala;
     private javax.swing.JButton btnPlatos;
     private javax.swing.JButton btnRegistrarSala;
     private javax.swing.JButton btnSala;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JButton btnUsuarios1;
-    private javax.swing.JButton btnUsuarios4;
-    private javax.swing.JButton btnUsuarios5;
     private javax.swing.JButton btnVentas;
-    private javax.swing.JComboBox<String> cbxRol;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
@@ -1441,37 +953,21 @@ public final class AdministradorVista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel39;
-    private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel15;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel24;
     private javax.swing.JPanel jPanel25;
-    private javax.swing.JPanel jPanel31;
-    private javax.swing.JPanel jPanel33;
     private javax.swing.JPanel jPanel35;
     private javax.swing.JPanel jPanel36;
     private javax.swing.JPanel jPanel38;
-    private javax.swing.JPanel jPanel39;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel9;
@@ -1480,9 +976,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -1496,20 +990,13 @@ public final class AdministradorVista extends javax.swing.JFrame {
     private javax.swing.JLabel totalMenu;
     private javax.swing.JTextField txtBuscarPlato;
     private javax.swing.JTextPane txtComentario;
-    private javax.swing.JTextField txtCorreo;
-    private javax.swing.JTextField txtCorreo1;
     private javax.swing.JTextField txtFechaHora;
     private javax.swing.JTextField txtIdHistorialPedido;
     private javax.swing.JTextField txtIdPedido;
-    private javax.swing.JTextField txtIdPlato;
     private javax.swing.JTextField txtIdSala;
     private javax.swing.JTextField txtMesas;
-    private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtNombrePlato;
     private javax.swing.JTextField txtNombreSala;
     private javax.swing.JTextField txtNumMesaFinalizar;
-    private javax.swing.JPasswordField txtPass;
-    private javax.swing.JTextField txtPrecioPlato;
     private javax.swing.JTextField txtSalaFinalizar;
     private javax.swing.JTextField txtTempIdSala;
     private javax.swing.JTextField txtTempNumMesa;
@@ -1520,19 +1007,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
         this.controlador = controlador;
     }
 
-    private void ListarUsuarios() {
-        List<login> Listar = lgDao.ListarUsuarios();
-        modelo = (DefaultTableModel) TableUsuarios.getModel();
-        Object[] ob = new Object[4];
-        for (int i = 0; i < Listar.size(); i++) {
-            ob[0] = Listar.get(i).getId();
-            ob[1] = Listar.get(i).getNombre();
-            ob[2] = Listar.get(i).getCorreo();
-            ob[3] = Listar.get(i).getRol();
-            modelo.addRow(ob);
-        }
-        colorHeader(TableUsuarios);
-    }
+    
 
     public void LimpiarTable() {
         for (int i = 0; i < modelo.getRowCount(); i++) {
@@ -1569,11 +1044,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
         txtMesas.setText("");
     }
     
-    private void LimpiarPlatos() {
-        txtIdPlato.setText("");
-        txtNombrePlato.setText("");
-        txtPrecioPlato.setText("");
-    }
+   
 
     private void panelSalas() {
         List<Sala> Listar = slDao.listarSalas();
@@ -1600,7 +1071,7 @@ public final class AdministradorVista extends javax.swing.JFrame {
         for (int i = 1; i <= cant; i++) {
             int num_mesa = i;
             //verificar estado
-            JButton boton = new JButton("MESA N°: " + i, new ImageIcon(getClass().getResource("/Img/mesa.png")));
+            JButton boton = new JButton("MESA N°: " + i, new ImageIcon(getClass().getResource("/img/mesa.png")));
             boton.setHorizontalTextPosition(JButton.CENTER);
             boton.setVerticalTextPosition(JButton.BOTTOM);
             int verificar = pedDao.verificarEstado(num_mesa, id_sala);

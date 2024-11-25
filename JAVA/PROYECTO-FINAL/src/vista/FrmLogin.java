@@ -141,7 +141,7 @@ public class FrmLogin extends javax.swing.JFrame {
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 430, 93, 35));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 170, 170));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 170, 170));
 
         barra.setBackground(new java.awt.Color(255, 255, 255));
         barra.setForeground(new java.awt.Color(0, 110, 255));
