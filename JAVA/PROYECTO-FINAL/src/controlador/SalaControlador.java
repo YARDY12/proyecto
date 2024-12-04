@@ -6,79 +6,81 @@ package controlador;
 import java.util.List;
 import dao.SalaDAO;
 import modelo.Sala;
-import vista.AdministradorVista;
+import vista.FrmCevicheria;
 /**
- *
- * @author YARDY
+ * Clase encargada de controlar las operaciones relacionadas con las salas en el
+ * sistema. Se encarga de interactuar con la vista (FrmCevicheria) y el DAO (SalaDAO)
+ * para gestionar la creación, actualización, eliminación, y visualización de salas.
  */
 public class SalaControlador {
     
-    private AdministradorVista vista;
+    private FrmCevicheria vista;
     private SalaDAO dao;
 
     /**
      * Constructor que inicializa el controlador con la vista y el DAO.
-     * @param vista Objeto SalaVista.
+     * 
+     * @param vista Objeto {@link FrmCevicheria} que representa la vista de la sala.
      */
-    public SalaControlador(AdministradorVista vista) {
+    public SalaControlador(FrmCevicheria vista) {
         this.vista = vista;
         this.dao = new SalaDAO();
-        this.vista.setControlador(this);
-        
+        this.vista.setControlador(this); // Asocia el controlador con la vista
     }
 
     /**
-     * Método para agregar una nueva sala.
-     * @param nombre Nombre de la sala.
-     * @param mesas Número de mesas en la sala.
+     * Agrega una nueva sala al sistema con el nombre y el número de mesas proporcionados.
+     * 
+     * @param nombre Nombre de la nueva sala.
+     * @param mesas Número de mesas en la nueva sala.
      */
     public void agregarSala(String nombre, int mesas) {
         Sala sala = new Sala();
-        sala.setNombre(nombre);
-        sala.setMesa(mesas);
-        boolean insercionExitosa = dao.registrarSala(sala);
+        sala.setNombre(nombre); // Asigna el nombre a la sala
+        sala.setMesa(mesas);    // Asigna el número de mesas
+        boolean insercionExitosa = dao.registrarSala(sala); // Registra la sala a través del DAO
     }
 
     /**
-     * Método para cargar y mostrar todas las salas en la vista.
+     * Carga todas las salas desde el DAO y las muestra en la vista.
      */
     public void cargarSalas() {
-        List<Sala> salas = dao.listarSalas();
+        List<Sala> salas = dao.listarSalas(); // Obtiene la lista de todas las salas
+        // Aquí podría añadirse código para actualizar la vista con la lista de salas
     }
 
     /**
-     * Método para actualizar una sala existente.
-     * @param id_sala ID de la sala.
-     * @param nombre Nuevo nombre de la sala.
-     * @param mesas Nuevo número de mesas.
+     * Actualiza los detalles de una sala existente en el sistema.
+     * 
+     * @param id_sala ID de la sala que se va a actualizar.
+     * @param nombre Nuevo nombre para la sala.
+     * @param mesas Nuevo número de mesas para la sala.
      */
     public void actualizarSala(int id_sala, String nombre, int mesas) {
-        Sala sala = new Sala(id_sala, nombre, mesas);
-        boolean actualizacionExitosa = dao.modificarSala(sala);
+        Sala sala = new Sala(id_sala, nombre, mesas); // Crea un objeto Sala con los nuevos datos
+        boolean actualizacionExitosa = dao.modificarSala(sala); // Modifica la sala a través del DAO
     }
 
     /**
-     * Método para eliminar una sala por su ID.
-     * @param id_sala ID de la sala a eliminar.
+     * Elimina una sala del sistema por su ID.
+     * 
+     * @param id_sala ID de la sala que se desea eliminar.
      */
     public void eliminarSala(int id_sala) {
-        boolean eliminacionExitosa = dao.eliminarSala(id_sala);
+        boolean eliminacionExitosa = dao.eliminarSala(id_sala); // Elimina la sala a través del DAO
     }
 
     /**
-     * Método para obtener y mostrar una sala específica por su ID.
-     * @param id_sala ID de la sala a buscar.
+     * Busca una sala por su ID y la muestra en la vista si se encuentra.
+     * 
+     * @param id_sala ID de la sala que se desea buscar.
      */
     public void buscarSalaPorId(int id_sala) {
-        List<Sala> salas = dao.listarSalas();  // Para mantener consistencia con DAO actual
+        List<Sala> salas = dao.listarSalas(); // Obtiene la lista de todas las salas
         Sala salaEncontrada = salas.stream()
-                                   .filter(s -> s.getId_sala() == id_sala)
+                                   .filter(s -> s.getId_sala() == id_sala) // Busca la sala por ID
                                    .findFirst()
-                                   .orElse(null);
-       
+                                   .orElse(null); // Retorna null si no encuentra la sala
+        // Aquí podría añadirse código para actualizar la vista con la sala encontrada
     }
-    
-        
-
-    
 }

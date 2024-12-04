@@ -5,11 +5,18 @@
 package modelo;
 import java.time.LocalDate;
 /**
- *
+ * Clase que representa a un cliente del establecimiento.
+ * Un cliente tiene atributos como su nombre, apellido, documento de identidad, 
+ * fecha de nacimiento, correo electrónico, teléfono, dirección y género.
+ * 
+ * <p>El cliente realiza pedidos en el establecimiento y puede tener información personal
+ * relacionada con su identidad y contacto. Además, su información puede ser utilizada 
+ * para realizar reservas o gestionar pedidos futuros.</p>
+ * 
  * @author YARDY
  */
 public class Cliente {
-    
+
     private int id_cliente;
     private String nombre;
     private String apellido;
@@ -20,9 +27,29 @@ public class Cliente {
     private String direccion;
     private String genero;
 
+    /**
+     * Constructor vacío que crea un objeto {@link Cliente} sin inicializar los valores.
+     * Este constructor permite crear un cliente sin proporcionar sus datos de inmediato, 
+     * lo que permite su inicialización posterior.
+     */
     public Cliente() {
     }
 
+    /**
+     * Constructor que crea un objeto {@link Cliente} con los valores proporcionados.
+     * Este constructor inicializa un cliente con la información personal y de contacto 
+     * necesaria para gestionar sus interacciones en el establecimiento.
+     * 
+     * @param id_cliente El ID único del cliente, utilizado para su identificación dentro del sistema.
+     * @param nombre El nombre del cliente.
+     * @param apellido El apellido del cliente.
+     * @param dni El número de DNI del cliente, utilizado como documento de identidad.
+     * @param fecha_nac La fecha de nacimiento del cliente.
+     * @param correo El correo electrónico del cliente, utilizado para contacto y notificaciones.
+     * @param telefono El número de teléfono del cliente.
+     * @param direccion La dirección de residencia del cliente.
+     * @param genero El género del cliente.
+     */
     public Cliente(int id_cliente, String nombre, String apellido, int dni, LocalDate fecha_nac, String correo, int telefono, String direccion, String genero) {
         this.id_cliente = id_cliente;
         this.nombre = nombre;
@@ -34,6 +61,8 @@ public class Cliente {
         this.direccion = direccion;
         this.genero = genero;
     }
+
+    // Getters and Setters
 
     public int getId_cliente() {
         return id_cliente;
@@ -106,7 +135,4 @@ public class Cliente {
     public void setGenero(String genero) {
         this.genero = genero;
     }
-    
-    
-    
 }

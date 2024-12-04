@@ -14,18 +14,24 @@ import conf.Conexion;
 import java.util.List;
 
 /**
- *
+ * Clase DAO para manejar las operaciones de base de datos relacionadas con la entidad Sala.
+ * Esta clase proporciona métodos para registrar, listar, eliminar y modificar salas en la base de datos.
+ * 
  * @author YARDY
  */
 public class SalaDAO {
-    
-    // Variables para manejar la conexión y las consultas SQL
-    private Connection con;
-    private PreparedStatement ps;
-    private ResultSet rs;
-    private final Conexion cn = new Conexion();
 
-    // Método para registrar una nueva sala
+    private Connection con;  // Conexión a la base de datos
+    private PreparedStatement ps;  // Sentencia SQL preparada
+    private ResultSet rs;  // Resultados de la consulta
+    private final Conexion cn = new Conexion();  // Objeto para la conexión a la base de datos
+
+    /**
+     * Registra una nueva sala en la base de datos.
+     * 
+     * @param sala El objeto Sala que contiene los datos a insertar.
+     * @return true si la sala fue registrada correctamente, false en caso contrario.
+     */
     public boolean registrarSala(Sala sala) {
         String sql = "INSERT INTO sala(nombre, mesa) VALUES (?, ?)";
         try {
@@ -43,7 +49,11 @@ public class SalaDAO {
         }
     }
 
-    // Método para listar todas las salas
+    /**
+     * Obtiene todas las salas registradas en la base de datos.
+     * 
+     * @return Una lista de objetos Sala con los datos de las salas.
+     */
     public List<Sala> listarSalas() {
         List<Sala> lista = new ArrayList<>();
         String sql = "SELECT * FROM sala";
@@ -66,7 +76,12 @@ public class SalaDAO {
         return lista;
     }
 
-    // Método para eliminar una sala por ID
+    /**
+     * Elimina una sala de la base de datos por su ID.
+     * 
+     * @param id_sala El ID de la sala a eliminar.
+     * @return true si la sala fue eliminada correctamente, false en caso contrario.
+     */
     public boolean eliminarSala(int id_sala) {
         String sql = "DELETE FROM sala WHERE id_sala = ?";
         try {
@@ -83,7 +98,12 @@ public class SalaDAO {
         }
     }
 
-    // Método para modificar una sala existente
+    /**
+     * Modifica los datos de una sala existente en la base de datos.
+     * 
+     * @param sala El objeto Sala con los datos actualizados.
+     * @return true si la sala fue modificada correctamente, false en caso contrario.
+     */
     public boolean modificarSala(Sala sala) {
         String sql = "UPDATE sala SET nombre = ?, mesa = ? WHERE id_sala = ?";
         try {
@@ -102,7 +122,10 @@ public class SalaDAO {
         }
     }
 
-    // Método para cerrar la conexión
+    /**
+     * Cierra la conexión con la base de datos.
+     * Este método se asegura de liberar los recursos relacionados con la conexión.
+     */
     private void cerrarConexion() {
         try {
             if (con != null) {
@@ -112,5 +135,4 @@ public class SalaDAO {
             System.out.println("Error al cerrar la conexión: " + e.toString());
         }
     }
-    
 }

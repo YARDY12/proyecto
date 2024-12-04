@@ -5,130 +5,277 @@
 package modelo;
 
 /**
+ * Representa una persona (empleado o usuario) en el sistema. Contiene
+ * información personal como el nombre, apellido, correo electrónico, celular,
+ * DNI, género, dirección, contraseña y rol.
  *
  * @author YARDY
  */
 public class Persona {
-    
-    private int id_empleado;
-    private String usuario;
-    private String contraseña;
-    private String nombre;
-    private String apellido;
-    private int dni;
-    private String correo;
-    private int telefono;
-    private String direccion;
-    private String genero;
-    private String cargo;
 
+    /**
+     * El ID único del empleado o persona
+     */
+    private int id_empleado;
+
+    /**
+     * El nombre de la persona
+     */
+    private String nombre;
+
+    /**
+     * El apellido de la persona
+     */
+    private String apellido;
+
+    /**
+     * El correo electrónico de la persona
+     */
+    private String correo;
+
+    /**
+     * El número de celular de la persona
+     */
+    private int celular;
+
+    /**
+     * El DNI de la persona
+     */
+    private int dni;
+
+    /**
+     * El género de la persona
+     */
+    private String genero;
+
+    /**
+     * La dirección de la persona
+     */
+    private String direccion;
+
+    /**
+     * La contraseña para acceder al sistema
+     */
+    private String pass;
+
+    /**
+     * El rol de la persona (por ejemplo, "Administrador", "Empleado")
+     */
+    private String rol;
+
+    /**
+     * Constructor vacío de la clase Persona. Inicializa un objeto Persona sin
+     * valores predeterminados.
+     */
     public Persona() {
     }
 
-    public Persona(int id_empleado, String usuario, String contraseña, String nombre, String apellido, int dni, String correo, int telefono, String direccion, String genero, String cargo) {
+    /**
+     * Constructor de la clase Persona con parámetros. Inicializa un objeto
+     * Persona con los valores proporcionados.
+     *
+     * @param id_empleado El ID único del empleado o persona.
+     * @param nombre El nombre de la persona.
+     * @param apellido El apellido de la persona.
+     * @param correo El correo electrónico de la persona.
+     * @param celular El número de celular de la persona.
+     * @param dni El DNI de la persona.
+     * @param genero El género de la persona.
+     * @param direccion La dirección de la persona.
+     * @param pass La contraseña de la persona.
+     * @param rol El rol de la persona (por ejemplo, "Administrador",
+     * "Empleado").
+     */
+    public Persona(int id_empleado, String nombre, String apellido, String correo, int celular, int dni, String genero, String direccion, String pass, String rol) {
         this.id_empleado = id_empleado;
-        this.usuario = usuario;
-        this.contraseña = contraseña;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.dni = dni;
         this.correo = correo;
-        this.telefono = telefono;
-        this.direccion = direccion;
+        this.celular = celular;
+        this.dni = dni;
         this.genero = genero;
-        this.cargo = cargo;
+        this.direccion = direccion;
+        this.pass = pass;
+        this.rol = rol;
     }
 
-    public String getCargo() {
-        return cargo;
-    }
-
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
-    }
-
+    /**
+     * Obtiene el ID único del empleado o persona.
+     *
+     * @return El ID del empleado o persona.
+     */
     public int getId_empleado() {
         return id_empleado;
     }
 
+    /**
+     * Establece el ID único del empleado o persona.
+     *
+     * @param id_empleado El nuevo ID del empleado o persona.
+     */
     public void setId_empleado(int id_empleado) {
         this.id_empleado = id_empleado;
     }
 
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
-    public String getContraseña() {
-        return contraseña;
-    }
-
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
-    }
-
+    /**
+     * Obtiene el nombre de la persona.
+     *
+     * @return El nombre de la persona.
+     */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+     * Establece el nombre de la persona.
+     *
+     * @param nombre El nuevo nombre de la persona.
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    /**
+     * Obtiene el apellido de la persona.
+     *
+     * @return El apellido de la persona.
+     */
     public String getApellido() {
         return apellido;
     }
 
+    /**
+     * Establece el apellido de la persona.
+     *
+     * @param apellido El nuevo apellido de la persona.
+     */
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
 
-    public int getDni() {
-        return dni;
-    }
-
-    public void setDni(int dni) {
-        this.dni = dni;
-    }
-
+    /**
+     * Obtiene el correo electrónico de la persona.
+     *
+     * @return El correo electrónico de la persona.
+     */
     public String getCorreo() {
         return correo;
     }
 
+    /**
+     * Establece el correo electrónico de la persona.
+     *
+     * @param correo El nuevo correo electrónico de la persona.
+     */
     public void setCorreo(String correo) {
         this.correo = correo;
     }
 
-    public int getTelefono() {
-        return telefono;
+    /**
+     * Obtiene el número de celular de la persona.
+     *
+     * @return El número de celular de la persona.
+     */
+    public int getCelular() {
+        return celular;
     }
 
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
+    /**
+     * Establece el número de celular de la persona.
+     *
+     * @param celular El nuevo número de celular de la persona.
+     */
+    public void setCelular(int celular) {
+        this.celular = celular;
     }
 
-    public String getDireccion() {
-        return direccion;
+    /**
+     * Obtiene el DNI de la persona.
+     *
+     * @return El DNI de la persona.
+     */
+    public int getDni() {
+        return dni;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    /**
+     * Establece el DNI de la persona.
+     *
+     * @param dni El nuevo DNI de la persona.
+     */
+    public void setDni(int dni) {
+        this.dni = dni;
     }
 
+    /**
+     * Obtiene el género de la persona.
+     *
+     * @return El género de la persona.
+     */
     public String getGenero() {
         return genero;
     }
 
+    /**
+     * Establece el género de la persona.
+     *
+     * @param genero El nuevo género de la persona.
+     */
     public void setGenero(String genero) {
         this.genero = genero;
     }
-    
-    
-    
-    
-    
+
+    /**
+     * Obtiene la dirección de la persona.
+     *
+     * @return La dirección de la persona.
+     */
+    public String getDireccion() {
+        return direccion;
+    }
+
+    /**
+     * Establece la dirección de la persona.
+     *
+     * @param direccion La nueva dirección de la persona.
+     */
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    /**
+     * Obtiene la contraseña de la persona.
+     *
+     * @return La contraseña de la persona.
+     */
+    public String getPass() {
+        return pass;
+    }
+
+    /**
+     * Establece la contraseña de la persona.
+     *
+     * @param pass La nueva contraseña de la persona.
+     */
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
+    /**
+     * Obtiene el rol de la persona.
+     *
+     * @return El rol de la persona (por ejemplo, "Administrador", "Empleado").
+     */
+    public String getRol() {
+        return rol;
+    }
+
+    /**
+     * Establece el rol de la persona.
+     *
+     * @param rol El nuevo rol de la persona.
+     */
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
 }
